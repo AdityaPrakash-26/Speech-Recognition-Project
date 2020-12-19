@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
         if(infoList.size() > 0){
             Toast.makeText(MainActivity.this, "Device supports speech recognition", Toast.LENGTH_SHORT).show();
+            listenToVoice();
         } else {
             Toast.makeText(MainActivity.this, "Device does not support speech recognition", Toast.LENGTH_SHORT).show();
         }
