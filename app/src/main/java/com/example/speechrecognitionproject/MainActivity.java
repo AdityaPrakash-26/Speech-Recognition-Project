@@ -1,5 +1,6 @@
 package com.example.speechrecognitionproject;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -10,6 +11,7 @@ import android.speech.RecognizerIntent;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -41,5 +43,23 @@ public class MainActivity extends AppCompatActivity {
         voiceIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
         voiceIntent.putExtra(RecognizerIntent.EXTRA_MAX_RESULTS, 10);
         startActivityForResult(voiceIntent, SPEAK_REQUEST);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == SPEAK_REQUEST && resultCode == RESULT_OK){
+            ArrayList<String> voiceWords = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+            float [] configLevels = data.getFloatArrayExtra(RecognizerIntent.EXTRA_CONFIDENCE_SCORES);
+
+            int index = 0;
+
+            for(String userWord : voiceWords){
+                if(configLevels != null && index < configLevels.length){
+                    txtValue.setText(userWord + "-" + configLevels[index]);
+                }
+            }
+        }
     }
 }
