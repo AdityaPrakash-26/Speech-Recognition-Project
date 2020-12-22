@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Speech Recognition Project</string>
+    <string name="btn_talk_message">Tap to speak</string>
 </resources>
