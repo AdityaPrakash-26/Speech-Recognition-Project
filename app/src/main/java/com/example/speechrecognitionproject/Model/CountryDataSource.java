@@ -11,7 +11,7 @@ public class CountryDataSource {
     public static final float MINIMUM_CONFIDENCE_LEVEL = 0.4f;
     public static final String DEFAULT_COUNTRY_NAME = "India";
     public static final double DEFAULT_COUNTRY_LATITUDE = 22.661388;
-    public static final double DEFAULT_COUNTRY_LONGITUTDE = 75.833971;
+    public static final double DEFAULT_COUNTRY_LONGITUDE = 75.833971;
     public static final String DEFAULT_COUNTRY_MESSAGE = "Welcome";
 
     private Hashtable<String, String> countriesAndMessages;
@@ -47,7 +47,7 @@ public class CountryDataSource {
                 }
             }
         }
-        return DEFAULT_COUNTRY_NAME
+        return DEFAULT_COUNTRY_NAME;
     }
 
     public String getCountryInfo(String country){
