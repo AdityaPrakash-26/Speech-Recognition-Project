@@ -52,7 +52,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.addMarker(markerOptions);
 
         CircleOptions circleOptions = new CircleOptions();
-        circleOptions.center(iceland).radius(300).strokeWidth(20.0f).strokeColor(Color.RED);
+        circleOptions.center(iceland).radius(30000).strokeWidth(20.0f).strokeColor(Color.RED);
         mMap.addCircle(circleOptions);
     }
 }

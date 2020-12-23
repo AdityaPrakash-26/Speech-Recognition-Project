@@ -58,13 +58,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         if(requestCode == SPEAK_REQUEST && resultCode == RESULT_OK){
             ArrayList<String> voiceWords = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
-            float [] configLevels = data.getFloatArrayExtra(RecognizerIntent.EXTRA_CONFIDENCE_SCORES);
+            float [] confidLevels = data.getFloatArrayExtra(RecognizerIntent.EXTRA_CONFIDENCE_SCORES);
 
             int index = 0;
 
             for(String userWord : voiceWords){
-                if(configLevels != null && index < configLevels.length){
-                    txtValue.setText(userWord + "-" + configLevels[index]);
+                if(confidLevels != null && index < confidLevels.length){
+                    txtValue.setText(userWord + "-" + confidLevels[index]);
                 }
             }
         }
