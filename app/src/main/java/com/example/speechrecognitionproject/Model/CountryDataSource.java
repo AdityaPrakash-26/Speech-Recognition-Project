@@ -12,7 +12,7 @@ public class CountryDataSource {
     public static final String DEFAULT_COUNTRY_NAME = "India";
     public static final double DEFAULT_COUNTRY_LATITUDE = 22.661388;
     public static final double DEFAULT_COUNTRY_LONGITUDE = 75.833971;
-    public static final String DEFAULT_COUNTRY_MESSAGE = "Welcome";
+    public static final String DEFAULT_COUNTRY_MESSAGE = "Hope you enjoy your stay";
 
     private Hashtable<String, String> countriesAndMessages;
 
