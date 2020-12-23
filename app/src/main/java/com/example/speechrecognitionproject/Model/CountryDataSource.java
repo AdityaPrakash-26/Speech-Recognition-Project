@@ -21,6 +21,11 @@ public class CountryDataSource {
 
     public String matchWithMinimumConfidenceLevelOfUserWords(ArrayList<String> userWords,
                                                              float[] confidenceLevels) {
+        if(userWords == null || confidenceLevels == null){
+            return DEFAULT_COUNTRY_NAME;
+        }
+
+        int numberOfUserWords = userWords.size();
 
     }
 }
