@@ -2,12 +2,15 @@ package com.example.speechrecognitionproject;
 
 import androidx.fragment.app.FragmentActivity;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
@@ -38,9 +41,18 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        // Add a marker in Iceland and move the camera
+        LatLng iceland = new LatLng(65.00, -18.30);
+
+        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(iceland, 5.0f);
+        mMap.moveCamera(cameraUpdate);
+
+        MarkerOptions markerOptions = new MarkerOptions();
+        markerOptions.position(iceland).title("Iceland").snippet("Random location in Iceland");
+        mMap.addMarker(markerOptions);
+
+        CircleOptions circleOptions = new CircleOptions();
+        circleOptions.center(iceland).radius(300).strokeWidth(20.0f).strokeColor(Color.RED);
+        mMap.addCircle(circleOptions);
     }
 }
