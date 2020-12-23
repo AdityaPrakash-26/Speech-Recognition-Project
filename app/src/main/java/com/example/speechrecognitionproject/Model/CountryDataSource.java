@@ -1,6 +1,7 @@
 package com.example.speechrecognitionproject.Model;
 
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.Hashtable;
 
 public class CountryDataSource {
@@ -27,5 +28,29 @@ public class CountryDataSource {
 
         int numberOfUserWords = userWords.size();
 
+        Enumeration<String> countries;
+
+        for(int i = 0; i < numberOfUserWords && i < confidenceLevels.length; i++){
+            if(confidenceLevels[i] < MINIMUM_CONFIDENCE_LEVEL){
+                break;
+            }
+
+            String acceptedUserWord = userWords.get(i);
+
+            countries = countriesAndMessages.keys();
+
+            while(countries.hasMoreElements()) {
+                String selectedCountry = countries.nextElement();
+
+                if(acceptedUserWord.equalsIgnoreCase(selectedCountry)){
+                    return acceptedUserWord;
+                }
+            }
+        }
+        return DEFAULT_COUNTRY_NAME
+    }
+
+    public String getCountryInfo(String country){
+        return countriesAndMessages.get(country);
     }
 }
